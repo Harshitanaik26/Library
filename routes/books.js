@@ -5,14 +5,6 @@ const Books = require('../models/book')
 
 //New Route
 router.get('/new',async(req,res)=>{
-    //try{
-        //const book = new Book()
-        //res.render('books/new',{
-            //book:book
-        //})
-    //}catch{
-        //res.redirect('/books')
-    //}
     renderNewPage(res,new Books())
 })
 
@@ -28,6 +20,16 @@ router.post('/',async(req,res)=>{
         res.redirect('/')
     }catch{
         renderNewPage(res,book,hasError=true)
+    }
+})
+
+//Show Page
+router.get('/:id',async(req,res)=>{
+    try{
+        const book = await Books.findById(req.params.id).exec()
+        res.render('books/show',{book:book})
+    }catch{
+        res.redirect('/')
     }
 })
 
