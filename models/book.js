@@ -1,5 +1,4 @@
 const mongoose = require('mongoose')
-//const Students = require('./student')
 
 const bookSchema = new mongoose.Schema({
     title:{
@@ -12,7 +11,11 @@ const bookSchema = new mongoose.Schema({
     },
     due:{
         type:Date
+    },
+    student:{
+        type:mongoose.Schema.Types.ObjectId,
+        //required:true,
+        ref:'Student'
     }
 })
-//include student database if required
 module.exports = mongoose.model('Books',bookSchema)

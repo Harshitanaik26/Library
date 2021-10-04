@@ -1,0 +1,22 @@
+<h2 class="page-header">Search Students</h2>
+<form action="/authors" method="GET">
+    <div class="form-row">
+        <div class="form-item">
+            <label>Name</label>
+            <input type="text" name="name" value="<%= searchOptions.name%>">
+        </div>
+    </div>
+    <div class="form-row form-row-end">
+        <button class="btn btn-primary" type="submit">Search</button>
+    </div>
+</form>
+<hr>
+<% students.forEach(student => { %>
+    <div class="author-row">
+        <div class="author-name"><%= student.name%></div>
+            <div class=" form-row-end btn-row">
+                <a class="btn btn-primary" href="/students/<%=student.id%>">View</a>
+            </div>
+    </div>
+
+<% }) %>

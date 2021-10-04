@@ -1,6 +1,8 @@
-<h2>Student Details</h2>
-<form action="/students" method='POST'>
+<h2>New Student</h2>
+<form action="/students" method="POST">
     <%-include('_form_fields.ejs')%>
-    <a href="/">Cancel</a>
-    <button type="submit">Get</button>
+    <div>
+        <a href="/students">Cancel</a>
+        <button type="submit">Add</button>
+    </div>
 </form>

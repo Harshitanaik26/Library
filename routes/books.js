@@ -1,8 +1,6 @@
 const express = require('express')
 const router = express.Router()
 const Books = require('../models/book')
-const Student = require('../models/student')
-
 
 //New Route
 router.get('/new',async(req,res)=>{
@@ -17,8 +15,8 @@ router.post('/',async(req,res)=>{
     })
     try{
         const newBook = await book.save()
-        //res.redirect(`books/${newBook.id}`)
-        res.redirect('/')
+        res.redirect(`books/${newBook.id}`)
+        //res.redirect('/')
     }catch{
         renderNewPage(res,book,hasError=true)
     }
@@ -29,7 +27,8 @@ router.get('/:id',async(req,res)=>{
     try{
         const book = await Books.findById(req.params.id).exec()
         res.render('books/show',{book:book})
-    }catch{
+    }catch(err){
+        console.log(err)
         res.redirect('/')
     }
 })
@@ -37,7 +36,7 @@ router.get('/:id',async(req,res)=>{
 
 async function renderNewPage(res,book,hasError=false){
     try{
-        //const book = new Book()
+        //const book = new Books()
         const params = {
             book:book
         }

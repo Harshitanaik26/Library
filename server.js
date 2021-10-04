@@ -9,7 +9,7 @@ const bodyParser = require('body-parser')
 
 const indexrouter = require('./routes/index')
 const booksrouter = require('./routes/books')
-const studentrouter = require('./routes/students')
+const studentsrouter = require('./routes/students')
 
 app.set('view engine','ejs')
 app.set('views',__dirname+'/views')
@@ -32,6 +32,6 @@ db.once('open',()=>{
 
 app.use('/',indexrouter)
 app.use('/books',booksrouter)
-app.use('/students',studentrouter)
+app.use('/students',studentsrouter)
 
 app.listen(process.env.PORT||3000)

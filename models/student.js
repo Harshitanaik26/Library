@@ -12,6 +12,15 @@ const studentSchema = new mongoose.Schema({
     department:{
         type:String,
         required:true
+    },
+    quantity:{
+        type:Number,
+        required:true
+    },
+    book:{
+        type: mongoose.Schema.Types.ObjectId,
+        //required:true,
+        ref:'Books'
     }
 })
 
